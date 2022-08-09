@@ -7,6 +7,7 @@ This is my original extension to 3D of the tic-tac-toe project of Islem Maboud(i
 Both client and server need to be run separataly with:
 
 yarn install
+
 yarn start
 
 Using the npm command in place of yarn can cause external modules compatibily issues.
