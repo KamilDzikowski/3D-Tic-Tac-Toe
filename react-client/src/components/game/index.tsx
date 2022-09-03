@@ -72,17 +72,21 @@ export interface IStartGame {
   start: boolean;
   symbol: "x" | "o";
 }
+//Check if a set of 2d points forms a line
 const colinear2d = (points: number[][]) => {
-  if(points[1][0] == points[0][0])
-    for (var i = 2; i < points.length; i++){
+  if(points[1][0] == points[0][0]){     //Check for a vertical line
+    for (var i = 2; i < points.length; i++)
       if(points[i][0] != points[i-1][0]) return false;
-      return true;
-    }
+    return true;
+  }
+  // Otherwise check for a non-vertical line
   let slope: number = (points[1][1] - points[0][1])/(points[1][0] - points[0][0]);
   for (var i = 2; i < points.length; i++)
     if((points[i-1][1] - points[i][1])/(points[i-1][0] - points[i][0]) != slope) return false;
   return true;
 }
+
+//Check if a set of 3d points forms a line by checking if all 3 of the 2d projections form a line
 const colinear3d = (points: number[][]) => {
   let proj: number[][] = [];
   for (var i = 0; i < points.length; i++) proj.push([points[i][0] ,points[i][1]]);
